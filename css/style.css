@@ -28,6 +28,10 @@ footer {
     border: 1px solid #999;
 }
 
+/*====================================
+    HEADER 
+====================================*/
+
 header {
     grid-area: header; 
     display: flex;
@@ -56,6 +60,10 @@ a {
     text-decoration: none;
 }
 
+img {
+    max-width: 100%;
+}
+
 .nav-links {
     display: flex;
     justify-content: space-around;
@@ -70,6 +78,10 @@ a {
     color: #000;
 }
 
+/*====================================
+    MAIN
+====================================*/
+
 main {
     grid-area: main;
     background-color: #af56d6;
@@ -80,20 +92,37 @@ aside {
     overflow-x: scroll;    
 }
 
-.pictures {
+.breed-selection {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.breed-selection select {
+    position: absolute;
+    right: 0;
+    top: 3px;
+    font-size: 1.3rem;
+}
+
+.gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-template-rows: auto;
     grid-gap: .75rem;
 }
 
-.pictures li {
-    height: 12rem;
+.gallery li {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #fcfcfc;
 }
+
+/*====================================
+   ASIDE
+====================================*/
 
 aside {
     grid-area: aside;
@@ -107,11 +136,29 @@ aside {
     padding: 1.5rem;
 }
 
+/*====================================
+   FOOTER
+====================================*/
+
 footer {
     grid-area: footer;
     height: 200px;
     background-color: #6f56d6;
 }
+
+/*====================================
+   CLEARFIX
+====================================*/
+
+.clearfix {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+/*====================================
+   MEDIA QUERIES
+====================================*/
 
 @media (max-width: 700px) {
     body {
@@ -134,7 +181,7 @@ footer {
         padding: 1rem 0;
         border: 1px solid #999;
     }
-    .pictures {
+    .gallery {
         grid-template-columns: 1fr;
     }
     main,
