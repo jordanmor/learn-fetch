@@ -8,18 +8,10 @@ function fetchData(url) {
             .then(res => res.json()) 
 }
 
-const limitArray = (arr, numOfItems) => {
-    if (arr.length > numOfItems) {
-        arr.splice(numOfItems);
-        return arr; 
-    } else {
-        return arr;
-    }
-};
-
 function generateImages(data) {
     gallery.innerHTML = '';
-    const imageArr = limitArray(data, 50);
+    // limit image array to 50 images
+    const imageArr = data.length > 50 ? data.slice(0, 50) : data;
     imageArr.map(item => {
         const li = document.createElement('li');
         const imageEl = document.createElement('img');
@@ -45,6 +37,14 @@ function generateOptions(data) {
     });
 }
 
+function fetchImages(url) {
+    fetchData(url)
+        .then(data => {
+            const imageArray = data.message;
+            generateImages(imageArray);
+        });
+}
+
 // Fetch Data
 
 function fetchBreedList() {
@@ -52,28 +52,17 @@ function fetchBreedList() {
         .then(data => {
             const breedList = data.message;
             generateOptions(breedList);
-            fetchRandomImages();
+            // Start with random images
+            fetchImages("https://dog.ceo/api/breeds/image/random/9");
         })
-}
-
-function fetchRandomImages() {
-    fetchData("https://dog.ceo/api/breeds/image/random/9")
-        .then(data => {
-            const imageArray = data.message;
-            generateImages(imageArray);
-        });
 }
 
 function fetchBreedImages() {
     if (select.value === 'randomBreeds') {
-        fetchRandomImages();
+        fetchImages("https://dog.ceo/api/breeds/image/random/9");
     } else {
-    const breed = select.value;
-    fetchData(`https://dog.ceo/api/breed/${breed}/images`)
-        .then(data => {
-            const imageArray = data.message;
-            generateImages(imageArray);
-        });
+        const breed = select.value;
+        fetchImages(`https://dog.ceo/api/breed/${breed}/images`);
     }
 }
 
