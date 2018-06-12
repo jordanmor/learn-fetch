@@ -181,6 +181,7 @@ footer {
     text-align: center;
     padding: 3rem;
     font-family: var(--font-primary);
+    font-size: 1.5rem;
     font-weight: 300;
 }
 
@@ -189,7 +190,10 @@ footer {
 ====================================*/
 
 @media (max-width: 700px) {
-
+    .wrapper {
+        grid-template-rows: auto;
+        background-color: #ccc;
+    }
     .nav-links {
         display: flex;
         flex-direction: column;
@@ -197,12 +201,21 @@ footer {
     }
     .nav-links li {
         margin-bottom: 1rem;
-        background-color: var(--bg-secondary);
+        border: none;
         padding: 1rem 0;
-        border: 1px solid #999;
+    }
+    .nav-links li:last-of-type {
+        border: none;
+    }
+    .container {
+        grid-template-columns: 1fr;
+        margin-bottom: 20px;
     }
     main,
     aside {
     overflow-x: visible;
     } 
+    main {
+        margin-bottom: 40px;
+    }
 }
