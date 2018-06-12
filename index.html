@@ -5,77 +5,96 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Learn To Fetch</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
         <link rel="stylesheet" href="./css/normalize.css">
         <link rel="stylesheet" href="./css/style.css">
     </head>
 
     <body>
-        <header>
-            <h1>Header</h1>
-            <nav>
+        <div class="wrapper">
+
+            <header>
+                <div class="header-container">
+                    <h1>It's All About The Dogs!</h1>
+                </div>
+            </header>
+
+            <nav class="nav-container">
                 <ul class="nav-links">
                     <li><a href="#">Home</a></li>
+                    <li><a href="#">Dog Stories</a></li>
+                    <li><a href="#">Dog Tricks</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Stories</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </nav>
-        </header>
-        <main>
-            <div class="breed-selection">
-                <h2>Main</h2>
-                <select name="breeds" id="breeds"></select>
-            </div>
-            <ul id="gallery" class="gallery">
-                <!-- Fetched images -->
-            </ul>
-        </main>
-        <aside>
-            <h2>Aside</h2>
-            <ul class="blog-posts">
-                <li>
-                    <h3>Blog Post Link</h3>
-                    <p>Blog Post Description...........</p>
-                </li>
-                <li>
-                    <h3>Blog Post Link</h3>
-                    <p>Blog Post Description...........</p>
-                </li>
-                <li>
-                    <h3>Blog Post Link</h3>
-                    <p>Blog Post Description...........</p>
-                </li>
-                <li>
-                    <h3>Blog Post Link</h3>
-                    <p>Blog Post Description...........</p>
-                </li>
-                <li>
-                    <h3>Blog Post Link</h3>
-                    <p>Blog Post Description...........</p>
-                </li>
-                <li>
-                    <h3>Blog Post Link</h3>
-                    <p>Blog Post Description...........</p>
-                </li>
-                <li>
-                    <h3>Blog Post Link</h3>
-                    <p>Blog Post Description...........</p>
-                </li>
-                <li>
-                    <h3>Blog Post Link</h3>
-                    <p>Blog Post Description...........</p>
-                </li>
-                <li>
-                    <h3>Blog Post Link</h3>
-                    <p>Blog Post Description...........</p>
-                </li>
-                <li>
-                    <h3>Blog Post Link</h3>
-                    <p>Blog Post Description...........</p>
-                </li>
-            </ul>
-        </aside>
-        <footer>Footer</footer>
+
+            <div class="container">
+
+                <main>
+                    <div class="breed-selection">
+                        <select name="breeds" id="breeds"></select>
+                    </div>
+                    <ul id="gallery" class="gallery">
+                        <!-- Fetched images -->
+                    </ul>
+                </main>
+
+                <aside>
+                    <h2>Aside</h2>
+                    <ul class="blog-posts">
+                        <li>
+                            <h3>Blog Post Link</h3>
+                            <p>Blog Post Description...........</p>
+                        </li>
+                        <li>
+                            <h3>Blog Post Link</h3>
+                            <p>Blog Post Description...........</p>
+                        </li>
+                        <li>
+                            <h3>Blog Post Link</h3>
+                            <p>Blog Post Description...........</p>
+                        </li>
+                        <li>
+                            <h3>Blog Post Link</h3>
+                            <p>Blog Post Description...........</p>
+                        </li>
+                        <li>
+                            <h3>Blog Post Link</h3>
+                            <p>Blog Post Description...........</p>
+                        </li>
+                        <li>
+                            <h3>Blog Post Link</h3>
+                            <p>Blog Post Description...........</p>
+                        </li>
+                        <li>
+                            <h3>Blog Post Link</h3>
+                            <p>Blog Post Description...........</p>
+                        </li>
+                        <li>
+                            <h3>Blog Post Link</h3>
+                            <p>Blog Post Description...........</p>
+                        </li>
+                        <li>
+                            <h3>Blog Post Link</h3>
+                            <p>Blog Post Description...........</p>
+                        </li>
+                        <li>
+                            <h3>Blog Post Link</h3>
+                            <p>Blog Post Description...........</p>
+                        </li>
+                    </ul>
+                </aside>
+
+            </div><!-- end of container -->
+
+            <footer>
+                <div class="footer-container">
+                    <h2>Footer</h2>
+                </div>
+            </footer>
+
+        </div><!-- end of wrapper -->
 
         <script type="text/javascript" src="./js/app.js"></script>
     </body>

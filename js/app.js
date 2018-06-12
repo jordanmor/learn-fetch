@@ -14,9 +14,7 @@ function generateImages(data) {
     const imageArr = data.length > 50 ? data.slice(0, 50) : data;
     imageArr.map(item => {
         const li = document.createElement('li');
-        const imageEl = document.createElement('img');
-        imageEl.src = item;
-        li.appendChild(imageEl);
+        li.style.backgroundImage = `url(${item})`;
         gallery.appendChild(li);
     });
 }
