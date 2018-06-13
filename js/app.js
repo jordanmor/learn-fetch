@@ -1,7 +1,37 @@
+/*====================================
+    Global
+====================================*/
+
 const select = document.getElementById('breeds');
 const gallery = document.getElementById('gallery');
+const blogPosts = document.getElementById('blog-posts'); 
 
-// Functions
+/*====================================
+    Functions
+====================================*/
+
+function createElement(element, property = undefined, value = undefined, property2 = undefined, value2 = undefined) {
+    const el = document.createElement(element);
+    el[property] = value;
+    el[property2] = value2;
+    return el;
+}
+
+function appendTo(parentEl, element, property = undefined, value = undefined, property2 = undefined, value2 = undefined) {
+    const el = createElement(element, property, value, property2, value2);
+    parentEl.appendChild(el);
+    return el;
+}
+
+const createPost = numOfLi => {
+    for(let i = 0; i < numOfLi; i++) {
+        const li = createElement('li');
+        appendTo(li, 'h3', 'textContent', 'Blog Post Link');
+        appendTo(li, 'p', 'textContent', 'Blog Post Description...........');
+        blogPosts.appendChild(li);
+    }
+}
+createPost(8);
 
 function fetchData(url) {
     return fetch(url)
@@ -43,7 +73,9 @@ function fetchImages(url) {
         });
 }
 
-// Fetch Data
+/*====================================
+    Fetch Data
+====================================*/
 
 function fetchBreedList() {
     fetchData("https://dog.ceo/api/breeds/list")
@@ -66,6 +98,8 @@ function fetchBreedImages() {
 
 fetchBreedList();
 
-// Event Listeners
+/*====================================
+    Event Listeners
+====================================*/
 
 select.addEventListener('change', fetchBreedImages);
