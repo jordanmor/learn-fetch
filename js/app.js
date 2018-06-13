@@ -23,16 +23,6 @@ function appendTo(parentEl, element, property = undefined, value = undefined, pr
     return el;
 }
 
-const createPost = numOfLi => {
-    for(let i = 0; i < numOfLi; i++) {
-        const li = createElement('li');
-        appendTo(li, 'h3', 'textContent', 'Blog Post Link');
-        appendTo(li, 'p', 'textContent', 'Blog Post Description...........');
-        blogPosts.appendChild(li);
-    }
-}
-createPost(8);
-
 function fetchData(url) {
     return fetch(url)
             .then(res => res.json()) 
@@ -41,7 +31,8 @@ function fetchData(url) {
 function generateImages(data) {
     gallery.innerHTML = '';
     // limit image array to 50 images
-    const imageArr = data.length > 50 ? data.slice(0, 50) : data;
+    // const imageArr = data.length > 50 ? data.slice(0, 50) : data;
+    const imageArr = limitData(data, 40);
     imageArr.map(item => {
         const li = document.createElement('li');
         li.style.backgroundImage = `url(${item})`;
@@ -65,6 +56,23 @@ function generateOptions(data) {
     });
 }
 
+const createPost = (title, body) => {
+    const li = createElement('li');
+    appendTo(li, 'h3', 'textContent', title);
+    appendTo(li, 'p', 'textContent', body);
+    blogPosts.appendChild(li);
+}
+
+const capitalize = text => text.charAt(0).toUpperCase() + text.substring(1);
+const addPeriod = text => `${text}.`;
+const limitData = (data, limitNumber) => data.length > limitNumber ? data.slice(0, limitNumber) : data;
+
+/*====================================
+    Fetch Data
+====================================*/
+
+// Fetch images
+
 function fetchImages(url) {
     fetchData(url)
         .then(data => {
@@ -72,10 +80,6 @@ function fetchImages(url) {
             generateImages(imageArray);
         });
 }
-
-/*====================================
-    Fetch Data
-====================================*/
 
 function fetchBreedList() {
     fetchData("https://dog.ceo/api/breeds/list")
@@ -97,6 +101,21 @@ function fetchBreedImages() {
 }
 
 fetchBreedList();
+
+// Fetch Posts
+
+function fetchPosts() {
+    fetchData('https://jsonplaceholder.typicode.com/posts')
+        .then(data => {
+            const posts = limitData(data, 20);
+            posts.map(item => {
+                const {title, body} = item;
+                createPost( capitalize(title), addPeriod(capitalize(body)) );
+            });
+        });
+}
+
+fetchPosts();
 
 /*====================================
     Event Listeners

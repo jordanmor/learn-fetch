@@ -121,7 +121,6 @@ nav {
     height: 100%;
     border-left: 1px solid #776776;
     font-family: var(--font-primary);
-    font-size: 1.1rem;
     font-weight: 300;
 }
 
@@ -134,15 +133,15 @@ nav {
     align-items: center;
     height: 100%;
     padding: 0 3rem;
+    font-size: 1.1rem;
     letter-spacing: .075rem;
     color: #fcfcfc;
-    transition: background-color 0.3s ease,
-                color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #fff;
     background-color: #333;
+    font-size: 1.12rem; 
 }
 
 /*====================================
@@ -197,6 +196,10 @@ aside h2 {
     font-size: 1rem;
     padding: 1.5rem;
     border-radius: 4px;
+}
+
+.blog-posts p {
+    line-height: 1.4;
 }
 
 /*====================================
