@@ -6,6 +6,14 @@ const select = document.getElementById('breeds');
 const gallery = document.getElementById('gallery');
 const posts = document.getElementById('stories'); 
 
+// Options
+
+const options = {
+    numOfGalleryImages: 21,
+    numOfRandomImages: 12,
+    numOfPosts: 6
+}
+
 /*====================================
     Functions
 ====================================*/
@@ -25,7 +33,7 @@ function appendTo(parentEl, element, property = undefined, value = undefined, pr
 
 function generateImages(data) {
     gallery.innerHTML = '';
-    const array = limitData(data, 40);
+    const array = limitData(data, options.numOfGalleryImages);
     array.map(item => {
         appendTo(gallery, 'li', 'style', `background-image: url(${item})`);
     });
@@ -76,7 +84,7 @@ function fetchBreedList() {
             const breedList = data.message;
             generateOptions(breedList);
             // Start with random images
-            fetchImages("https://dog.ceo/api/breeds/image/random/9");
+            fetchImages(`https://dog.ceo/api/breeds/image/random/${options.numOfRandomImages}`);
         })
 }
 
@@ -96,7 +104,7 @@ fetchBreedList();
 function fetchPosts() {
     fetchData('https://jsonplaceholder.typicode.com/posts')
         .then(data => {
-            const posts = limitData(data, 20);
+            const posts = limitData(data, options.numOfPosts);
             posts.map(item => {
                 const {title, body} = item;
                 createPosts( capitalize(title), addPeriod(capitalize(body)) );
