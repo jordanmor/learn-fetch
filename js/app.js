@@ -4,7 +4,7 @@
 
 const select = document.getElementById('breeds');
 const gallery = document.getElementById('gallery');
-const blogPosts = document.getElementById('blog-posts'); 
+const posts = document.getElementById('stories'); 
 
 /*====================================
     Functions
@@ -23,45 +23,40 @@ function appendTo(parentEl, element, property = undefined, value = undefined, pr
     return el;
 }
 
-function fetchData(url) {
-    return fetch(url)
-            .then(res => res.json()) 
-}
-
 function generateImages(data) {
     gallery.innerHTML = '';
-    // limit image array to 50 images
-    // const imageArr = data.length > 50 ? data.slice(0, 50) : data;
-    const imageArr = limitData(data, 40);
-    imageArr.map(item => {
-        const li = document.createElement('li');
-        li.style.backgroundImage = `url(${item})`;
-        gallery.appendChild(li);
+    const array = limitData(data, 40);
+    array.map(item => {
+        appendTo(gallery, 'li', 'style', `background-image: url(${item})`);
     });
-}
-
-function createOption(value, textContent) {
-    const option = document.createElement("option");
-    option.value = value;
-    option.textContent = textContent;
-    select.appendChild(option);
 }
 
 function generateOptions(data) {
     // Initial Option
-    createOption("randomBreeds", "Choose Breed");
+    appendTo(select, 'option', 'value', 'randomBreeds', 'textContent', 'Choose Breed');
     // Populate list of breeds
     data.map(item => {
-        createOption(item, item);
+        appendTo(select, 'option', 'value', item, 'textContent', item);
     });
 }
 
-const createPost = (title, body) => {
+const createPosts = (title, body) => {
     const li = createElement('li');
     appendTo(li, 'h3', 'textContent', title);
     appendTo(li, 'p', 'textContent', body);
-    blogPosts.appendChild(li);
+    posts.appendChild(li);
 }
+
+function createDate() {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const date = new Date();
+    const dayOfMonth = date.getDate();
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+    return `${month} ${dayOfMonth}, ${year}`;
+}
+
+console.log(createDate());
 
 const capitalize = text => text.charAt(0).toUpperCase() + text.substring(1);
 const addPeriod = text => `${text}.`;
@@ -71,13 +66,18 @@ const limitData = (data, limitNumber) => data.length > limitNumber ? data.slice(
     Fetch Data
 ====================================*/
 
+function fetchData(url) {
+    return fetch(url)
+            .then(res => res.json()) 
+}
+
 // Fetch images
 
 function fetchImages(url) {
     fetchData(url)
         .then(data => {
-            const imageArray = data.message;
-            generateImages(imageArray);
+            const imagesArray = data.message;
+            generateImages(imagesArray);
         });
 }
 
@@ -110,7 +110,7 @@ function fetchPosts() {
             const posts = limitData(data, 20);
             posts.map(item => {
                 const {title, body} = item;
-                createPost( capitalize(title), addPeriod(capitalize(body)) );
+                createPosts( capitalize(title), addPeriod(capitalize(body)) );
             });
         });
 }
