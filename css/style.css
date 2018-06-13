@@ -210,9 +210,11 @@ aside h2 {
 ====================================*/
 
 footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--bg-dark);
     color: #fcfcfc;
-    text-align: center;
     padding: 3rem;
     font-family: var(--font-primary);
     font-size: 1.5rem;
@@ -221,6 +223,11 @@ footer {
 
 .copyright {
     font-size: .8rem;
+    display: inline-block;
+}
+
+.copyright span {
+    margin-right: 4px;
 }
 
 /*====================================

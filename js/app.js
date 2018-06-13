@@ -57,6 +57,14 @@ function createDate() {
     return `${month} ${dayOfMonth}, ${year}`;
 }
 
+function populateCopyrightYear() {
+    const span = document.getElementById('copyright-year');
+    const currentYear = new Date().getFullYear();
+    span.textContent = `© ${currentYear}`;
+}
+
+populateCopyrightYear();
+
 const createPosts = (title, body) => {
     const li = createElement('li');
     appendTo(li, 'h3', 'textContent', title);
