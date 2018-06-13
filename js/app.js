@@ -48,10 +48,20 @@ function generateOptions(data) {
     });
 }
 
+function createDate() {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const date = new Date();
+    const dayOfMonth = date.getDate();
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+    return `${month} ${dayOfMonth}, ${year}`;
+}
+
 const createPosts = (title, body) => {
     const li = createElement('li');
     appendTo(li, 'h3', 'textContent', title);
     appendTo(li, 'p', 'textContent', body);
+    appendTo(li, 'span', 'className', 'date', 'textContent', createDate());
     posts.appendChild(li);
 }
 
