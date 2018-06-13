@@ -11,7 +11,7 @@ const posts = document.getElementById('stories');
 const options = {
     numOfGalleryImages: 21,
     numOfRandomImages: 12,
-    numOfPosts: 6
+    numOfPosts: 5
 }
 
 /*====================================

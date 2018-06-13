@@ -55,13 +55,30 @@ select {
 }
 
 /*====================================
+    GLOBAL STYLES
+====================================*/
+
+.flex-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*====================================
 CONTAINERS
 ====================================*/
 .wrapper {
     margin: 0 auto;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 200px 50px auto 250px;
+    grid-template-rows: 200px 50px auto 200px;
     background-color: #ccc;
 }
 
@@ -85,8 +102,7 @@ CONTAINERS
 }
 
 .header-container {
-    display: flex;
-    align-items: center;
+    justify-content: start;
     height: 100%;
 }
 
@@ -113,9 +129,7 @@ nav {
 
 .nav-links {
     height: 100%;
-    display: flex;
     justify-content: start;
-    align-items: center;
 }
 
 .nav-links li {
@@ -210,9 +224,6 @@ aside h2 {
 ====================================*/
 
 footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: var(--bg-dark);
     color: #fcfcfc;
     padding: 3rem;
@@ -220,6 +231,60 @@ footer {
     font-size: 1.5rem;
     font-weight: 300;
 }
+
+.footer-container {
+    height: 80px;
+}
+
+/*--- Social Media Links --*/
+
+.social-links {
+    width: 220px;
+    height: 4rem;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.social-links svg {
+    width: 2rem;
+}
+
+.social-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 3rem;
+}
+
+.social-link .circle {
+    fill: #fff;
+}
+
+.social-link .icon {
+    fill: #333;
+}
+
+.social-link .circle,
+.social-link .icon {
+    transition: all .4s ease;
+}
+
+.social-link:hover svg,
+.social-link:hover svg {
+    transform: scale(1.1) rotate(3deg);
+    transform-origin: 50% 50%;
+}
+
+.social-link:hover .circle {
+    fill: #333;
+}
+
+.social-link:hover .icon {
+    fill: #fff;
+}
+
+/*--- Copyright --*/
 
 .copyright {
     font-size: .8rem;
