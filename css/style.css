@@ -61,7 +61,7 @@ CONTAINERS
     margin: 0 auto;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 200px 50px minmax(600px, 800px) 150px;
+    grid-template-rows: 200px 50px auto 250px;
     background-color: #ccc;
 }
 
@@ -78,9 +78,10 @@ CONTAINERS
     width: 100%;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     grid-column-gap: 15px;
     margin-top: 50px;
+    margin-bottom: 3rem;
 }
 
 .header-container {
@@ -147,11 +148,6 @@ nav {
 /*====================================
     MAIN
 ====================================*/
-
-main,
-aside {
-    overflow-x: scroll;    
-}
 
 .breed-selection {
     width: 100%;
