@@ -47,17 +47,6 @@ const createPosts = (title, body) => {
     posts.appendChild(li);
 }
 
-function createDate() {
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const date = new Date();
-    const dayOfMonth = date.getDate();
-    const month = months[date.getMonth()];
-    const year = date.getFullYear();
-    return `${month} ${dayOfMonth}, ${year}`;
-}
-
-console.log(createDate());
-
 const capitalize = text => text.charAt(0).toUpperCase() + text.substring(1);
 const addPeriod = text => `${text}.`;
 const limitData = (data, limitNumber) => data.length > limitNumber ? data.slice(0, limitNumber) : data;
