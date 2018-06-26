@@ -1,3 +1,3 @@
 # learn-to-fetch
-Simple site built with CSS Grid and using the Javascript Fetch API
+Simple site built with CSS Grid and using the Javascript Fetch API  
 //////////////////////////////////////////////////////////////////
